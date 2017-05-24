@@ -1,7 +1,6 @@
 package pl.akademiakodu;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -17,6 +16,8 @@ public class Main {
                 .filter(s -> s.startsWith("O"))
                 .forEach(s -> System.out.println(s));
 
+
+        System.out.println("-----------------------------------------------------------------------------------");
 //        SORTOWANIE INFORMACJI:
         myList.stream()
                 .filter(s -> s.length() > 4)                    //warunek ze imie musi byc wieksze niz 4 znaki
@@ -27,7 +28,10 @@ public class Main {
                 .findFirst()
                 .ifPresent(s -> System.out.println(s));
 
+
+        System.out.println("-----------------------------------------------------------------------------------");
 //        OPTIONAL SPRAWDZAJACY/ZABEZPIECZAJACY PRZED NULL-ami
+//        TODO: Sprawdzić poprawność z nagraniem (23.05.2017) bo sypie wyjątkiem
 //        Optional<String> optional = Optional.of(null);
 
 //        if(optional.isPresent()){
@@ -38,9 +42,9 @@ public class Main {
 //                             LUB
 //        optional.ifPresent(s -> System.out.println(s));
 
+
         System.out.println("-----------------------------------------------------------------------------------");
 //        INNY SPOSOB TWORZENIA STREAMA
-
         Stream.of("a142", "a2124", "a323")
                 .map(s -> s.substring(1))
                 .mapToInt(s -> Integer.valueOf(s))
@@ -50,7 +54,6 @@ public class Main {
                 .ifPresent(s -> System.out.println(s));
 
         System.out.println("-----------------------------------------------------------------------------------");
-
         IntStream.of(5, 10, 124, 123)
                 .average()
 //                .ifPresent(System.out::println); //COLON - stricte do lambd
@@ -59,7 +62,6 @@ public class Main {
 
 
         System.out.println("-----------------------------------------------------------------------------------");
-
         List<Person> personList = new ArrayList<>();
         personList.add(new Person("Oskar", 26));
         personList.add(new Person("Piotr", 20));
@@ -81,8 +83,8 @@ public class Main {
                 .collect(Collectors.summarizingInt(person -> person.getAge()));
         System.out.println("Statystyki: " + statistics);
 
-        System.out.println("-----------------------------------------------------------------------------------");
 
+        System.out.println("-----------------------------------------------------------------------------------");
         List<String> converted = personList.stream()
                 .map(s -> s.getName())
                 .collect(Collectors.toList());
