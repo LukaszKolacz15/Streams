@@ -17,7 +17,7 @@ public class Main {
                 .forEach(s -> System.out.println(s));
 
 
-        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("------------------------------------ SORTOWANIE ---------------------------------------------");
 //        SORTOWANIE INFORMACJI:
         myList.stream()
                 .filter(s -> s.length() > 4)                    //warunek ze imie musi byc wieksze niz 4 znaki
@@ -29,7 +29,7 @@ public class Main {
                 .ifPresent(s -> System.out.println(s));
 
 
-        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("----------------------------------- NULL ------------------------------------------------");
 //        OPTIONAL SPRAWDZAJACY/ZABEZPIECZAJACY PRZED NULL-ami
 //        TODO: Sprawdzić poprawność z nagraniem (23.05.2017) bo sypie wyjątkiem
 //        Optional<String> optional = Optional.of(null);
@@ -41,6 +41,21 @@ public class Main {
 //        }
 //                             LUB
 //        optional.ifPresent(s -> System.out.println(s));
+
+//              -------------------------------------------------------------------------
+//        String obiekt = null;
+        String obiekt = "Akademia kodu jest fajna!";
+
+        Optional<String> myOptional = Optional.ofNullable(obiekt);
+
+        if (myOptional.isPresent()) {
+            System.out.println("Obiekt istnieje " + myOptional.get());
+        } else {
+            System.out.println("Obiekt jest nullem");
+        }
+
+                
+
 
 
         System.out.println("-----------------------------------------------------------------------------------");
@@ -61,11 +76,11 @@ public class Main {
                 .ifPresent(s -> System.out.println(s));
 
 
-        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("------------------------------------- STATYSTYKI --------------------------------------------");
         List<Person> personList = new ArrayList<>();
         personList.add(new Person("Oskar", 26));
         personList.add(new Person("Piotr", 20));
-        personList.add(new Person("Lukasz", 70));
+        personList.add(new Person("Lukasz", 20));
         personList.add(new Person("Kuba", 14));
 
         String message = personList.stream()
@@ -89,5 +104,14 @@ public class Main {
                 .map(s -> s.getName())
                 .collect(Collectors.toList());
         System.out.println(converted);
+
+
+        System.out.println("-------------------------------------- GRUPOWANIE -------------------------------------------");
+//        GRUPOWANIE:
+        Map<Integer, List<Person>> groupByAge = personList.stream()
+                .collect(Collectors.groupingBy(s -> s.getAge()));
+
+        groupByAge.forEach((a, b) -> System.out.println(a + " : " + b.toString()));
+
     }
 }

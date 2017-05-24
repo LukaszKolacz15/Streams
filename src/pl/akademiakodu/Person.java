@@ -11,6 +11,17 @@ public class Person {
     private char sex;
 
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                '}';
+    }
+
+
     public Person(String name, int age){
         this.name=name;
         this.age=age;
