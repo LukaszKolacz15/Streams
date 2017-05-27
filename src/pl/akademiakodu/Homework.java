@@ -35,12 +35,10 @@ public class Homework {
         employeeList.add(new Employee("Viktor", "Rammstein", "ArtaTech"));
         employeeList.add(new Employee("Michal", "Makaruk", "AkademiaKodu"));
 
-//          ---------------------------- map --------------------------------
         Map<String, List<Employee>> groupByCompany = employeeList.stream()
                 .collect(Collectors.groupingBy(e -> e.getCompany()));
 
         groupByCompany.forEach((company, e) -> System.out.println(e.toString()));
-
 
     }
 }
