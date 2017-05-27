@@ -54,7 +54,7 @@ public class Main {
             System.out.println("Obiekt jest nullem");
         }
 
-                
+
 
 
 
